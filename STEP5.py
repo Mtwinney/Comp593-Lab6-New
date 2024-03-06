@@ -1,13 +1,13 @@
 import requests
-import re
-import os
-import hashlib
 import tempfile
 import subprocess
+import hashlib
+import re
+import os
 
 url = "http://download.videolan.org/pub/videolan/vlc/last/win64/vlc-3.0.20-win64.exe"
 expected_hash = "d8055b6643651ca5b9ad58c438692a481483657f3f31624cdfa68b92e8394a57"
-def vlc_url_download(url, expected_hash):
+def run_installer(url, expected_hash):
     try:
         response = requests.get(url, stream=True)
         response.raise_for_status()
@@ -39,4 +39,4 @@ def vlc_url_download(url, expected_hash):
     except subprocess.CalledProcessError as e:
         print(f"Error running installer: {e}")
 
-vlc_url_download(url, expected_hash)
+run_installer(url, expected_hash)

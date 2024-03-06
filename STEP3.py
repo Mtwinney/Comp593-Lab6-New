@@ -7,7 +7,7 @@ url = "http://download.videolan.org/pub/videolan/vlc/last/win64/vlc-3.0.20-win64
 expected_hash = "d8055b6643651ca5b9ad58c438692a481483657f3f31624cdfa68b92e8394a57"
 
 
-def vlc_url_download(url, expected_hash):
+def installer_data(url, expected_hash):
     try:
         response = requests.get(url, stream=True)
         response.raise_for_status()
@@ -27,4 +27,4 @@ def vlc_url_download(url, expected_hash):
     except requests.RequestException as e:
         print(f"Installer download failed: {e}")
 
-vlc_url_download(url, expected_hash)
+installer_data(url, expected_hash)

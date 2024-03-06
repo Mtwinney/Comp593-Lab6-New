@@ -23,7 +23,7 @@ def vlc_url_download():
         print(f"URL Not Found: {e}")
         return None
 
-def get_sha256_hash(url):
+def expected_hash(url):
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -35,7 +35,7 @@ def get_sha256_hash(url):
 latest_vlc_vers = vlc_url_download()
 if  latest_vlc_vers:
     expected_hash_url = f"http://download.videolan.org/pub/videolan/vlc/last/win64/{latest_vlc_vers}.sha256"
-    expected_hash = get_sha256_hash(expected_hash_url)
+    expected_hash = expected_hash(expected_hash_url)
     if expected_hash:
         print("Expected SHA256 hash:", expected_hash)
     else:
