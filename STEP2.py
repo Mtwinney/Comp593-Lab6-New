@@ -3,7 +3,7 @@ import requests
 import hashlib
 import platform
 import re
-import os
+
 
 def vlc_url_download():
     try:
